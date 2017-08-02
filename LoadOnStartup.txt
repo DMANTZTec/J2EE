@@ -1,0 +1,90 @@
+FirstServlet.java:
+
+
+ublic class FirstServlet extends HttpServlet {
+	
+	
+	private static final long serialVersionUID = 1L;
+
+
+	public void init(ServletConfig config) throws ServletException {
+		
+		System.out.println("loading firstServlet");
+		super.init();
+	}
+		
+	
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html");
+		PrintWriter out=response.getWriter();
+		out.print("load on startup first servlet");
+		out.close();
+		
+	}
+
+	
+public void destroy() {
+	System.out.println("destryoing firstServlet");	
+	
+	super.destroy();
+	}
+
+	
+}
+
+
+SecondServlet.java:
+
+
+
+
+public class SecondServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	public void init(ServletConfig config) throws ServletException {
+		System.out.println("loading second servlet");
+		
+	}
+
+	public void destroy() {
+		System.out.println("destryoing secondServlet");
+		
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html");
+		PrintWriter out=response.getWriter();
+		out.print("load on startup second servlet");
+		out.close();
+		}
+}
+
+
+
+
+web.xml:
+
+
+
+ <servlet>
+  <servlet-name>FirstServlet</servlet-name>
+  <servlet-class>com.servlet.FirstServlet</servlet-class>
+  <load-on-startup>0</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>FirstServlet</servlet-name>
+  <url-pattern>/FirstServlet</url-pattern>
+ </servlet-mapping>
+  <servlet>
+ <servlet-name>SecondServlet</servlet-name> 
+ <servlet-class>com.servlet.SecondServlet</servlet-class>
+ <load-on-startup>1</load-on-startup>
+   </servlet>
+  <servlet-mapping>
+  <servlet-name>SecondServlet</servlet-name>
+  <url-pattern>/SecondServlet</url-pattern>
+  
+</servlet-mapping>
+  
+  
