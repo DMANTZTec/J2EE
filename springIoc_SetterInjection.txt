@@ -1,0 +1,78 @@
+Student.JAvA:
+
+
+public class Student {
+	
+	public String studentName;
+	public int studentNo;
+	public int studentMarks;
+	
+	public String getStudentName() {
+		return studentName;
+	}
+	public void setStudentName(String studentName) {
+		this.studentName = studentName;
+	}
+	public int getStudentNo() {
+		return studentNo;
+	}
+	public void setStudentNo(int studentNo) {
+		this.studentNo = studentNo;
+	}
+	public int getStudentMarks() {
+		return studentMarks;
+	}
+	public void setStudentMarks(int studentMarks) {
+		this.studentMarks = studentMarks;
+	}
+	
+	
+
+}
+
+
+
+
+spring-config.xml:
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd" xmlns:util="http://www.springframework.org/schema/util" xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns="http://www.springframework.org/schema/beans">
+
+<bean id="Student" class="com.model.Student">
+<property name="studentName" value="sravan"></property>
+<property name="studentNo" value="222"></property>
+<property name="studentMarks" value="500"></property>
+
+</bean>
+</beans>
+
+
+
+studentTest.java:
+
+
+
+
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class SpringTest {
+
+	public static void main(String[] args) {
+		System.out.println("in testing class");
+		
+		
+		ApplicationContext context=new ClassPathXmlApplicationContext("spring-config.xml");
+		Student student=(Student)context.getBean("Student");
+		System.out.println(student.getStudentNo());
+		System.out.println(student.getStudentName());
+		System.out.println(student.getStudentMarks());
+		
+
+	}
+
+	
+	}
+
