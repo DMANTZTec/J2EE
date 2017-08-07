@@ -1,0 +1,210 @@
+Bank.java:
+
+
+
+package com.Business;
+
+public class Bank {
+	
+private int amount=5000;
+private String acno="SBI123";
+
+
+
+public int deposite(String acno,int amount) {
+	
+	
+	if(acno.equals(this.acno)) {
+		 System.out.println("in deposite method");		
+		this.amount=this.amount+amount;
+		 return this.amount;
+		 
+		
+	}
+		 else {
+			 
+			throw new AcnoNotFoundException();
+		 }
+}
+	
+	public int checkBal(String ac) {
+		if(ac.equals(this.acno)) {
+			return this.amount;
+		}
+			else {
+				throw new AcnoNotFoundException();
+			}
+		}
+	
+}
+
+ACnotFoundException.java:
+
+package com.Business;
+
+public class AcnoNotFoundException extends RuntimeException {
+	
+	
+	@Override
+	public String toString() {
+		return "Acno invalid";
+		
+		
+	}
+	
+
+}
+
+
+Logafterservice.java:
+
+package services;
+
+
+
+import java.lang.reflect.Method;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.aop.AfterReturningAdvice;
+
+import com.Business.Bank;
+
+
+
+public class LogAfterService implements AfterReturningAdvice {
+
+	
+	public void afterReturning(Object re, Method m, Object[] param, Object o)  {
+
+		Log l=LogFactory.getLog(Bank.class);
+		l.info("in after advice"+re);
+	}
+
+	
+
+}
+
+LogBeforeservice.java:
+
+
+
+package services;
+
+import java.lang.reflect.Method;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.aop.MethodBeforeAdvice;
+
+import com.Business.Bank;
+
+public class LogBeforeService implements MethodBeforeAdvice {
+
+	@Override
+	public void before(Method m, Object[] param, Object o)  {
+		
+		Log l=LogFactory.getLog(Bank.class);
+		l.info("in before method advice");
+		
+	}
+
+}
+
+
+LogAroundService.java:
+
+
+package services;
+
+import java.lang.reflect.Method;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.aop.MethodBeforeAdvice;
+
+import com.Business.Bank;
+
+public class LogBeforeService implements MethodBeforeAdvice {
+
+	@Override
+	public void before(Method m, Object[] param, Object o)  {
+		
+		Log l=LogFactory.getLog(Bank.class);
+		l.info("in before method advice");
+		
+	}
+
+}
+
+
+Springtest.java:
+
+
+
+package test;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.Business.Bank;
+
+public class Client {
+	public static void main(String[] args) {
+		
+		ApplicationContext context=new ClassPathXmlApplicationContext("spring-config.xml");
+		Bank bproxy=(Bank)context.getBean("proxy");
+	int amount=bproxy.deposite("SBI123", 10000);
+	
+	System.out.println(amount);
+    /*int amount=bproxy.checkBal("SBI123");
+	
+	System.out.println(amount);*/
+	}
+
+	}
+
+
+
+
+Spring-config.xml:
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xsi:schemaLocation=" http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans-4.0.xsd 
+http://www.springframework.org/schema/context 
+http://www.springframework.org/schema/context/spring-context-4.0.xsd 
+http://www.springframework.org/schema/mvc
+ http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+  http://www.springframework.org/schema/util 
+  http://www.springframework.org/schema/util/spring-util-4.0.xsd" 
+  xmlns:util="http://www.springframework.org/schema/util"
+   xmlns:mvc="http://www.springframework.org/schema/mvc" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context" 
+    xmlns="http://www.springframework.org/schema/beans">
+
+    
+    <bean id="b"  class="com.Business.Bank"></bean>
+    <bean id="Lb"   class="services.LogBeforeService"></bean>
+    <bean id="La"   class="services.LogAfterService"></bean>
+    <bean id="mi"   class="services.LogAroundService"></bean>
+    
+    
+    <bean id="proxy"  class="org.springframework.aop.framework.ProxyFactoryBean">
+    <property name="target" ref="b"></property>
+    <property name="interceptorNames">
+    <list>
+    <value>Lb</value> 
+    <value>La</value>
+    <value>mi</value>
+    </list>
+    
+    </property>
+    
+    </bean>
+    
+    </beans> 
+
