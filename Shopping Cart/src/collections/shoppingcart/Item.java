@@ -12,6 +12,7 @@ public class Item {
 	
 	
 	
+	//constructor
 	public Item (String ItemName,Integer ItemID, Double ItemPrice,String ItemCategory,String ItemSubcategory,Integer ItemAvaliableQuantity) {
         this.ItemID = ItemID;
         this.ItemName = ItemName;
