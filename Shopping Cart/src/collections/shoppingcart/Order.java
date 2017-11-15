@@ -52,6 +52,5 @@ public class Order {
 			System.out.print(i.getItemName() + " ");
 			System.out.println(i.getItemQuantity());
 		}
-	}
-	
+	}	
 }

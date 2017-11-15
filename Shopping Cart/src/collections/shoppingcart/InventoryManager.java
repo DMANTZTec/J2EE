@@ -86,7 +86,7 @@ public class InventoryManager {
 		ViewItems();
 		
 		UpdateItems(); 
-		ViewItems();
+	
 		
 	}
 

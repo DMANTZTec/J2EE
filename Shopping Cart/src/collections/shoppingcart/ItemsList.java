@@ -6,7 +6,8 @@ public class ItemsList {
 	
 	private final static List<Item> Items = new ArrayList<Item>();
 	
-	public ItemsList( ) {
+	public ItemsList( )
+	{
 		StoreItems();
 	}
 	
