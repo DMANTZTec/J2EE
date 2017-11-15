@@ -1,9 +1,15 @@
 package collections.shoppingcart;
 
+
+import java.sql.* ;
 import java.util.*;
 
 public class InventoryManager {
 	
+
+    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/shopping_cart", "root", "");
+    Statement stmt = connection.createStatement();
+    
 	static List<Item> Item = new ArrayList<Item>();
 	static Scanner s = new Scanner (System.in);
 	
@@ -12,11 +18,10 @@ public class InventoryManager {
 		OrderManager.ViewItems();
 	}
 	
-	@SuppressWarnings({ "unused", "resource" })
 	static void CreateItems()
 	{
 		Scanner s = new Scanner (System.in);
-		System.out.println("Enter the Item Name :");
+		System.out.println("Enter the Item Name :"); 
 		String ItemName = s.nextLine(); 
 		ItemsList.StoreItems().ItemName.add(ItemName);
 		System.out.println("Enter the Item ID :");
@@ -26,7 +31,7 @@ public class InventoryManager {
 		Double ItemPrice = s.nextDouble();
 		ItemsList.StoreItems().ItemPrice.add(ItemPrice);
 		System.out.println("Enter the Item Category :");
-		String ItemCategory = s.nextLine();
+		String ItemCategory = s.nextLine();   
 		ItemsList.StoreItems().ItemCategory.add(ItemCategory);
 		System.out.println("Enter the Item Subcategory :");
 		String ItemSubcategory = s.nextLine();
@@ -56,7 +61,9 @@ public class InventoryManager {
 
 	static void UpdatePrice(){
 		
+		System.out.println("enter the ID");
 		int ItemID = s.nextInt();
+		System.out.println("enter the item price");
 		Item item = Order.GetItemByItemID(ItemID);
 		Item.add(item);
 		
@@ -65,16 +72,22 @@ public class InventoryManager {
 	
 	static void DeleteItems()
 	{
-		
+		String sql = "DELETE FROM my_table WHERE col_string='a string'";
+	    int deleteCount = stmt.executeUpdate(sql);
+	    sql = "DELETE FROM my_table WHERE col_string=?";
+	    PreparedStatement pstmt = connection.prepareStatement(sql);
+	    pstmt.setString(1, "a string");
+	    deleteCount = pstmt.executeUpdate();
 	}
 	
 	public static void main(String[] args) {
 		  
 		
 		ViewItems();
-		CreateItems();
+		
 		UpdateItems(); 
-		DeleteItems();
+		ViewItems();
+		
 	}
 
 
