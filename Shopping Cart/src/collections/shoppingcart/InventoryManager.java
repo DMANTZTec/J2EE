@@ -1,14 +1,13 @@
 package collections.shoppingcart;
 
-
+import java.io.*;
 import java.sql.* ;
 import java.util.*;
 
 public class InventoryManager {
 	
 
-    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/shopping_cart", "root", "");
-    Statement stmt = connection.createStatement();
+   
     
 	static List<Item> Item = new ArrayList<Item>();
 	static Scanner s = new Scanner (System.in);
@@ -18,27 +17,27 @@ public class InventoryManager {
 		OrderManager.ViewItems();
 	}
 	
-	static void CreateItems()
+	static void CreateItems() throws Exception
 	{
-		Scanner s = new Scanner (System.in);
-		System.out.println("Enter the Item Name :"); 
-		String ItemName = s.nextLine(); 
-		ItemsList.StoreItems().ItemName.add(ItemName);
-		System.out.println("Enter the Item ID :");
-		Integer ItemID = s.nextInt();
-		ItemsList.StoreItems().ItemID.add(ItemID);
-		System.out.println("Enter the Item Price :");
-		Double ItemPrice = s.nextDouble();
-		ItemsList.StoreItems().ItemPrice.add(ItemPrice);
-		System.out.println("Enter the Item Category :");
-		String ItemCategory = s.nextLine();   
-		ItemsList.StoreItems().ItemCategory.add(ItemCategory);
-		System.out.println("Enter the Item Subcategory :");
-		String ItemSubcategory = s.nextLine();
-		ItemsList.StoreItems().ItemSubcategory.add(ItemSubcategory);
-		System.out.println("Enter the Item Quantity :");
-		Integer ItemAvaliableQuantity = s.nextInt();
-		ItemsList.StoreItems().ItemAvaliableQuantity.add(ItemAvaliableQuantity);
+		BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\Home\\Documents\\items_test.txt"));
+	    String line = null;
+
+	    int i = 0;
+	    while ((line = br.readLine()) != null) {  	
+	    	System.out.println(line);
+	    	System.out.println("Line Number : " + i);
+	    	StringTokenizer tokenizer = new StringTokenizer(line, ",");
+	    	while(i>=1 && tokenizer.hasMoreTokens() )
+	    	{
+		    	System.out.println("ItemID = " + tokenizer.nextToken());
+		    	System.out.println("ItemName = " + tokenizer.nextToken());
+		    	System.out.println("ItemDescription = " + tokenizer.nextToken());
+		    	System.out.println("ItemPrice = " + tokenizer.nextToken());
+		    	System.out.println("ItemSubcategory = " + tokenizer.nextToken());
+		    	System.out.println("ItemCategory = " + tokenizer.nextToken());
+		    }
+	    }
+	    br.close();
 	}
 	
 	static void UpdateItems()
@@ -72,12 +71,35 @@ public class InventoryManager {
 	
 	static void DeleteItems()
 	{
-		String sql = "DELETE FROM my_table WHERE col_string='a string'";
-	    int deleteCount = stmt.executeUpdate(sql);
-	    sql = "DELETE FROM my_table WHERE col_string=?";
-	    PreparedStatement pstmt = connection.prepareStatement(sql);
-	    pstmt.setString(1, "a string");
-	    deleteCount = pstmt.executeUpdate();
+		
+	}
+	
+	static void DeleteItemFromFile(String inputFile,String itemNumber,String outputFile)
+	{
+        File inFile = new File(inputFile);
+        
+        //Construct the new file that will later be renamed to the original filename. 
+        File outFile = new File(outputFile);
+
+    try {  
+        BufferedReader br = new BufferedReader(new FileReader(inFile));
+        PrintWriter pw = new PrintWriter(new FileWriter(outFile));
+
+        String line = null;
+        
+       while ((line = br.readLine()) != null) {
+          if (!line.trim().contains(itemNumber)) {
+            pw.println(line);
+            pw.flush();
+          }
+        }
+       br.close();
+       pw.close();
+	} catch (Exception ex) {
+        ex.printStackTrace();
+      }
+     
+        
 	}
 	
 	public static void main(String[] args) {
@@ -85,7 +107,7 @@ public class InventoryManager {
 		
 		ViewItems();
 		
-		UpdateItems(); 
+		DeleteItems(); 
 	
 		
 	}
