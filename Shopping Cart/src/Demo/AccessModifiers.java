@@ -2,15 +2,27 @@ package Demo;
 
 public class AccessModifiers {
 	
-	public static void main(String[] args)
-	{
+private void test() {
 		
-		AccessModifiersTest amt = new AccessModifiersTest();
-		
-		amt.A();
-		amt.A1();
-		amt.A2();
+		System.out.println("private");
 		
 	}
-
+	
+	void A(){
+		
+		System.out.println("default");
+		
+	}
+	
+	public void A1() {
+		
+		System.out.println("public");
+		
+	}
+	
+	protected void A2() {
+		
+		System.out.println("protected");
+		
+	}
 }

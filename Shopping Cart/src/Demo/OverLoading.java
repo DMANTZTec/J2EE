@@ -2,18 +2,31 @@ package Demo;
 
 public class OverLoading {
 	
-	public static void main(String[] args) {
+public void test() {
 		
-		OverLoadingTest o = new OverLoadingTest();
+		System.out.println("No parameters");
 		
-		o.test();
-		o.test(10);
-		o.test(10,20);
-		o.test(10);
-		int i = 30;
-		o.test(i);
 	}
 	
+	public int test(int i,double j)
+	{
+		
+		System.out.println(i);
+		return i*i;
+		
+	}
 	
+	void test(int i, int j)
+	{
+		System.out.println(i+ " " +j);
+	}
+	
+	public double test(int i)
+	{
+		
+		System.out.println(i);
+		return i;
+		
+	}
 
 }

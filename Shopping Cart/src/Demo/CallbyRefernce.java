@@ -2,14 +2,20 @@ package Demo;
 
 public class CallbyRefernce {
 	
-	public static void main(String[] args)
+public int a;
+public int b;
+	
+	public CallbyRefernce(int i,int j)
 	{
+		a = i;
+		b = j;
+	}
+
+	public void test(CallbyRefernce c) {
 		
-		CallbyRefernceTest c = new CallbyRefernceTest(10, 20);
+		c.a *= 2;
 		
-		System.out.println("before call by reference a and b :" +c.a+ " " +c.b);
-		c.test(c);
-		System.out.println("after call by reference a and b :" +c.a+ " " +c.b);
+		c.b /= 2;
 		
 	}
 

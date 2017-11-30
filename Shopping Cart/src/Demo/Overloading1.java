@@ -1,18 +1,45 @@
 package Demo;
 
+import org.junit.jupiter.api.Test;
+import DemoTest.Overloading1Test;
+
 public class Overloading1 {
 	
-	public static void main(String[] args) {
-		
-		OLTest m1 = new OLTest();
-		OLTest m2 = new OLTest(3);
-		OLTest m3 = new OLTest(4,5,6);
-		OLTest m4 = new OLTest(4);
-		
-		System.out.println(m1.add());
-		System.out.println(m2.add());
-		System.out.println(m3.add());
-		System.out.println(m4.add());
-	}
+	int a,b,c;
 
+	void Overloading1(Overloading1 o) {
+		
+		a = o.a;
+		b = o.b;
+		c = o.c;
+		
+	}
+	
+	public Overloading1(int l){
+		
+		a = b = c = l;
+		
+	}
+	
+	public Overloading1(){
+		
+		a = 1;
+		b = 2;
+		c = 3;
+		
+	}
+	
+	public Overloading1(int a,int b,int c){
+		
+		this.a = a;
+		this.b = b;
+		c = c;
+	}
+	
+	public int add() {
+		
+		return a+b+c;
+		
+	}
+	
 }
