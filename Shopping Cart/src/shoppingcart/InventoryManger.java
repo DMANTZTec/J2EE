@@ -19,7 +19,7 @@ public class InventoryManger {
 	    String line = null;
 
 	    String II,IN,IP,IC,IS,IQ;
-	    int J = 0;
+	    int J = 1;
 	    while ((line = br.readLine()) != null) {  	
 	    	System.out.println(line);
 	    	J++;
