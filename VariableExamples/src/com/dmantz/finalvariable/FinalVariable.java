@@ -34,7 +34,7 @@ public class FinalVariable {
 	
 	/*We can perform initialization for the final lacal variables in the following places.
 	
-	2) Inside the method
+	1) Inside the method
 	void m1()
 	{
 	final int i = 0;
