@@ -16,7 +16,7 @@ public class InstanceVariable {
 	*/
 	
 	//For the instance variables if we don't perform any initialization, JVM will always provide the default values.
-	//create and initialize instance variable
+	//creating instance variable
 	int x; 
 	public void methodOne() {
 		
