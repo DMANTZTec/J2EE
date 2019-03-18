@@ -9,8 +9,8 @@ public class WhileEx {
 		int a=10;
 		int b=20;
 		
-	while(a<b) {
-		System.out.println("Hi");
+	while(a>b) {
+		System.out.println(a);
 	}
 	
 	System.out.println("Hello");
