@@ -13,7 +13,7 @@ public class LocalVariable {
 		
 		/*JVM won’t provide any default values. Before using a local variable
 		compulsory we should perform initialization explicitly otherwise we will get compile time error.*/		
-		final int x=10; //only applicable modifier is final
+		final int x=10; //For localvariables only applicable modifier  is final
 		System.out.println("The Value of x="+x);	
 		
 	}
