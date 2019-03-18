@@ -14,19 +14,21 @@ public class IfElseExample {
 	-declarative statement other wise compile time error.*/
 	
 	public static void main(String []args) {
-		if(true) {
-			System.out.println("Hello");
-			int x=10;
-			System.out.println(x);
-			}else{
-			System.out.println("Hi");
-			}if(false) {
-				System.out.println("Bye");
-			     int x=10;
-			     System.out.println(x);
-	}else {
-		System.out.println("Ok");
-	}
+		
+		int crickeplayers=11;
 	
+		if(crickeplayers<=10) {
+			System.out.println("yes we have one team and ready to play");			
+			}else{
+			System.out.println("we dont have players so we aren't play");
+			if(crickeplayers==11) 
+			{	
+				System.out.println("Now we have players so we r ready to play");
+			} else {
+		       System.out.println("Ok");
 	}
+			
+	}
+}
+	
 }
