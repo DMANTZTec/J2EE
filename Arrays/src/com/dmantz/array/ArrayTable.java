@@ -21,7 +21,7 @@ public class ArrayTable {
 			 
 			 System.out.println(count + "\t" +arr[count]);
 			 
-		 }
+		 }		
 		
 	}
 
