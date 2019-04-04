@@ -14,7 +14,7 @@ public class SerializeDemo {
 		Person p=new Person("SanthoshReddy",30,"50000");
 		
 		try {
-			FileOutputStream fos=new FileOutputStream("C:\\Users\\sony\\santhosh\\abc.txt");
+			FileOutputStream fos=new FileOutputStream("	abc.txt");
 			ObjectOutputStream oos=new ObjectOutputStream(fos);
 			oos.writeObject(p);
 			oos.close();
