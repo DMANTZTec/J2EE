@@ -14,6 +14,7 @@ public class MyComparator implements Comparator {
 		
 		String s1=(String)o1;
 		String s2=(String)o2;
+		System.out.println("Comapare method called");
 		return s1.compareTo(s2);//it's give the result in Ascending order
 		//return s2.compareTo(s1);//it's give the result in descending order
 		//return 1;//it's give the result in Insertion Order
