@@ -26,11 +26,11 @@ public class SortedExample {
 	
 	System.out.println(al);
 	
-	  //List<Integer> l=al.stream().sorted().collect(Collectors.toList());//AscendingOrder
+	  List<Integer> l=al.stream().sorted().collect(Collectors.toList());//AscendingOrder
 	  //List<Integer> l=al.stream().sorted((i1,i2)->i2.compareTo(i1)).collect(Collectors.toList());//DescendingOrder
 	  //List<Integer> l=al.stream().sorted((i1,i2)->1).collect(Collectors.toList());//InsertionOrder
-	    List<Integer> l=al.stream().sorted((i1,i2)->-1).collect(Collectors.toList());//ReverseOfInsertionOrder
-	    
+	   //List<Integer> l=al.stream().sorted((i1,i2)->-1).collect(Collectors.toList());//ReverseOfInsertionOrder
+	   
 	System.out.println(l);
 }
 	

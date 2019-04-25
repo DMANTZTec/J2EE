@@ -21,6 +21,7 @@ public class StreamsFilterExample {
 		al.add(20);
 		al.add(25);
 		
+		
 		System.out.println(al);
 		
 	List<Integer> l=al.stream().filter(i->i%2==0).collect(Collectors.toList());//Filtering only Even Numbers
