@@ -1,6 +1,15 @@
 package com.dmantz.streams;
 
-public class Test {
+interface Interf {
+	
+	//public void add(int a,int b);
+
+    public int square(int n);
+	
+	
+}
+
+public class FunctionalInterface {
 	
 	
 	public static void main(String[]args) {
