@@ -1,6 +1,6 @@
 package com.dmantz.streams;
 
-interface Interf {
+interface Interfc {
 	
 	//public void add(int a,int b);
 
@@ -20,7 +20,7 @@ public class FunctionalInterface {
 		i.add(1000, 2000);
 		*/
 		
-		Interf i= n->{return n*n;};
+		Interfc i= n->{return n*n;};
 		
 		System.out.println("The Square of 10 is:"+i.square(10));
 		System.out.println("The Square of 20 is:"+i.square(20));
