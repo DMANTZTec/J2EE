@@ -25,7 +25,7 @@ public class SupplierFI {
 						
 		};
 		
-		System.out.println(s.get());
+		System.out.println("Your OTP is Generated Please dont Share With Anyone: " +s.get());
 		
 	}
 
