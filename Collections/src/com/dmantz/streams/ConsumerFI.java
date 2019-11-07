@@ -17,7 +17,7 @@ import java.util.function.Consumer;
 	public static void main(String []args) {
 		
 		Consumer<Movie> c1=m->System.out.println(m.name+"  Ready to release");
-		Consumer<Movie> c2=m->System.out.println(m.name+"  Released but flap");
+		Consumer<Movie> c2=m->System.out.println(m.name+"  Released but failed");
 		Consumer<Movie> c3=m->System.out.println(m.name+"  Removed from theater");
 		Consumer<Movie> cc=c1.andThen(c2).andThen(c3);
 		
