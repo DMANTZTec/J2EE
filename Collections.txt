@@ -1,0 +1,11 @@
+Collections: 
+
+It provides a framework of the Architecture that manipulates and stores the group of objects
+
+It can Achive all the Operations the can be done on Data like Searching, Sorting, Deletion, Insertion, Manipulation
+
+It also provides many Interfaces and Classes
+
+Interfaces(Set,List, Queue, Dqueue)
+
+Classes(ArrayList, Vector, LinkedSet, Hashset, Priorityqueue, Treeset)
